@@ -1,0 +1,18 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../../App.svelte",
+    "../../HowTo.svelte",
+    "../../ProgressBar.svelte",
+    "../../Timer.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n  import Timer from \"./Timer.svelte\";\n  import HowTo from \"./HowTo.svelte\";\n</script>\n\n<style>\n  h1,\n  h3 {\n    text-align: center;\n  }\n</style>\n\n<h1>Handwashing App</h1>\n\n<Timer />\n\n<HowTo />\n\n<h3>\n  <a href=\"https://www.who.int/gpsc/clean_hands_protection/en/\">\n    Picture Source\n  </a>\n\n  <a href=\"https://freesound.org/people/metrostock99/sounds/345086/ \">\n    Sound Source\n  </a>\n</h3>\n",
+    "<style>\n  img {\n    width: 100%;\n  }\n</style>\n\n<div bp=\"grid\">\n\n  <img\n    bp=\"offset-5@md 4@md 12@sm\"\n    src=\"handwashing.gif\"\n    alt=\"How to wash your hands.\" />\n</div>\n",
+    "<script>\n  export let progress = 0;\n</script>\n\n<style>\n  .progress-container {\n    margin: 20px 0;\n    border: solid rgb(194, 194, 194) 1px;\n  }\n  .progress-bar {\n    height: 30px;\n    background-color: rgb(77, 199, 55);\n  }\n</style>\n\n<div bp=\"grid\">\n  <div bp=\"offset-5@md 4@md 12@sm\" class=\"progress-container\">\n    <div class=\"progress-bar\" style=\"width: {progress}%;\">\n      <span class=\"sr-only\">%{progress}</span>\n    </div>\n  </div>\n</div>\n",
+    "<script>\n  import ProgressBar from \"./ProgressBar.svelte\";\n  const totalSeconds = 20;\n  let secondLeft = totalSeconds;\n  let isRunning = false;\n  $: progress = ((totalSeconds - secondLeft) / totalSeconds) * 100;\n\n  function startTimer() {\n    isRunning = true;\n    const timer = setInterval(() => {\n      secondLeft -= 1;\n      if (secondLeft == 0) {\n        clearInterval(timer);\n        isRunning = false;\n        secondLeft = totalSeconds;\n      }\n    }, 1000);\n  }\n</script>\n\n<style>\n  h2 {\n    margin: 0;\n  }\n  .start {\n    background-color: rgb(154, 73, 73);\n    width: 100%;\n    margin: 10px 0;\n  }\n  .start[disabled] {\n    background-color: rgb(194, 194, 194);\n    cursor: not-allowed;\n  }\n</style>\n\n<div bp=\"grid\">\n  <h2 bp=\"offset-5@md 4@md 12@sm\">Seconds Left: {secondLeft}</h2>\n</div>\n<ProgressBar {progress} />\n\n<div bp=\"grid\">\n\n  <button\n    disabled={isRunning}\n    on:click={startTimer}\n    bp=\"offset-5@md 4@md 12@sm\"\n    class=\"start\">\n    Start\n  </button>\n\n</div>\n"
+  ],
+  "names": [],
+  "mappings": "AAME,gBAAE,CACF,EAAE,cAAC,CAAC,AACF,UAAU,CAAE,MAAM,AACpB,CAAC;ACRD,GAAG,eAAC,CAAC,AACH,KAAK,CAAE,IAAI,AACb,CAAC;ACED,mBAAmB,cAAC,CAAC,AACnB,MAAM,CAAE,IAAI,CAAC,CAAC,CACd,MAAM,CAAE,KAAK,CAAC,IAAI,GAAG,CAAC,CAAC,GAAG,CAAC,CAAC,GAAG,CAAC,CAAC,GAAG,AACtC,CAAC,AACD,aAAa,cAAC,CAAC,AACb,MAAM,CAAE,IAAI,CACZ,gBAAgB,CAAE,IAAI,EAAE,CAAC,CAAC,GAAG,CAAC,CAAC,EAAE,CAAC,AACpC,CAAC;ACSD,EAAE,eAAC,CAAC,AACF,MAAM,CAAE,CAAC,AACX,CAAC,AACD,MAAM,eAAC,CAAC,AACN,gBAAgB,CAAE,IAAI,GAAG,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAClC,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,CAAC,CAAC,AAChB,CAAC,AACD,MAAM,CAAC,QAAQ,CAAC,eAAC,CAAC,AAChB,gBAAgB,CAAE,IAAI,GAAG,CAAC,CAAC,GAAG,CAAC,CAAC,GAAG,CAAC,CACpC,MAAM,CAAE,WAAW,AACrB,CAAC"
+}
