@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+# Notes
 
-body {
-  font-family: 'Lato', sans-serif;
-}
+## CSS
 
+```css
 button {
   border: none;
   color: #fff;
@@ -20,3 +19,10 @@ button {
 .sr-only {
   display: none;
 }
+```
+
+## Links
+
+https://www.who.int/gpsc/clean_hands_protection/en/
+
+https://freesound.org/people/metrostock99/sounds/345086/
